@@ -1,4 +1,2 @@
-# react-auth
-User login and signup using Reat JS and Firebase.
-
-Read article on [medium](https://medium.com/@Rushabh_/implementing-user-login-and-signup-with-reactjs-and-firebase-a-comprehensive-guide-7300bd33cb01)
+# Agrovid
+Proyecto con nombre JardineroConecta, disponible para que jardineros de todas partes puedan promocionar su negocio centralizadamente y que personas puedan encontrarlos fácilmente desde su aplicación móvil
