@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Form, Alert, Button, Image, Row, Col } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -36,16 +35,21 @@ const Login = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase/ React Auth Login</h2>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <Image src="logo192.png" roundedCircle />
+          </Col>
+        </Row>
+
+        <h2 className="mb-3">Acceso</h2>
 
         {error && <Alert variant="danger">{error}</Alert>}
 
         <Form onSubmit={handleSubmit}>
-          
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
-              placeholder="Email address"
+              placeholder="Correo"
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
@@ -53,14 +57,14 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
-              Log In
+              Acceder
             </Button>
           </div>
         </Form>
@@ -70,11 +74,12 @@ const Login = () => {
             className="g-btn"
             type="dark"
             onClick={handleGoogleSignIn}
+            label="Acceder con Google"
           />
         </div>
       </div>
       <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
+        ¿No tienes una cuenta? <Link to="/signup">Registro</Link>
       </div>
     </>
   );
