@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert, Button, Row, Col, Image } from "react-bootstrap";
+import { Form, Alert, Button, Row, Col, Image, Container } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
 
 const Signup = () => {
@@ -22,7 +22,7 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <Container style={{ width: "400px" }}>
       <div className="p-4 box">
         <Row className="justify-content-md-center">
           <Col md="auto">
@@ -60,7 +60,7 @@ const Signup = () => {
       <div className="p-4 box mt-3 text-center">
         ¿Ya tienes una cuenta? <Link to="/">Iniciar sesión</Link>
       </div>
-    </>
+    </Container>
   );
 };
 

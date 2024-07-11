@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert, Button, Image, Row, Col } from "react-bootstrap";
+import { Form, Alert, Button, Image, Row, Col, Container } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Container style={{ width: "400px" }}>
       <div className="p-4 box">
         <Row className="justify-content-md-center">
           <Col md="auto">
@@ -81,7 +81,7 @@ const Login = () => {
       <div className="p-4 box mt-3 text-center">
         ¿No tienes una cuenta? <Link to="/signup">Registro</Link>
       </div>
-    </>
+    </Container>
   );
 };
 

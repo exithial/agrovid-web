@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -15,19 +15,26 @@ const Home = () => {
     }
   };
   return (
-    <>
+    <Container style={{ minHeight: "100vh", minWidth: "100vw" }}>
+      <Navbar className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="#home">
+            Bienvenido {user && user.email}
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              <Button variant="primary" onClick={handleLogout}>
+                Cerrar sesión
+              </Button>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
       <div className="p-4 box mt-3 text-center">
-        Welcome <br />
-        {user && user.email}
+        
       </div>
-      <div className="d-grid gap-2">
-
-          <Button variant="primary" onClick={handleLogout}>
-            Log out
-          </Button>
-
-      </div>
-    </>
+    </Container>
   );
 };
 
