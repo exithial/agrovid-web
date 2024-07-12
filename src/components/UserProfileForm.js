@@ -44,7 +44,8 @@ function UserProfileForm({ resume }) {
 
   const uploadFile = async (file) => {
     try {
-      const storageRef = ref(storage, "images/" + file.name);
+      const filename = user.email + "-" + file.name;
+      const storageRef = ref(storage, "images/" + filename);
       await uploadBytes(storageRef, file);
       console.log("Archivo cargado correctamente");
       const downloadUrl = await getDownloadURL(storageRef);
