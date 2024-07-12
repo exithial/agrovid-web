@@ -75,6 +75,7 @@ const Login = () => {
             type="dark"
             onClick={handleGoogleSignIn}
             label="Acceder con Google"
+            style={{ width: "100%" }}
           />
         </div>
       </div>
