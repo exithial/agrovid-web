@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  Card,
   Col,
   Container,
   Modal,
@@ -13,6 +14,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { objectIsEmpty } from "../utils";
+import UserProfileForm from "./UserProfileForm";
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
@@ -51,21 +53,49 @@ const Home = () => {
   }, [user]);
 
   return (
-    <Container style={{ minHeight: "100vh", minWidth: "100vw" }}>
-      <Navbar className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#home">Bienvenido {user?.email}</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Button variant="primary" onClick={handleLogout}>
-                Cerrar sesión
-              </Button>
-            </Navbar.Text>
-          </Navbar.Collapse>
+    <>
+      {!loadingResume && (
+        <Container style={{ minHeight: "100vh", minWidth: "100vw" }}>
+          <Navbar className="bg-body-tertiary">
+            <Container>
+              <Navbar.Brand href="#home">Bienvenido {user?.email}</Navbar.Brand>
+              <Navbar.Toggle />
+              <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
+                  <Button variant="primary" onClick={handleLogout}>
+                    Cerrar sesión
+                  </Button>
+                </Navbar.Text>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
+          <div className="d-flex p-4 box mt-3 justify-content-center text-center">
+            <div>
+              {resume === null ? (
+                <div>
+                  <h3>Aún no tienes actualizada tu información</h3>
+                  <h4>Llena el siguiente formulario</h4>
+                </div>
+              ) : (
+                <div>
+                  <h3>Tus datos están correctos</h3>
+                  <h4>Puedes actualizar tus datos en el siguiente formulario</h4>
+                </div>
+              )}
+
+              <Card style={{ marginTop: 30 }}>
+                <Card.Header as="h5">
+                  {resume === null ? "Agregar" : "Actualizar"} información de
+                  jardinero
+                </Card.Header>
+                <Card.Body>
+                  <UserProfileForm resume={resume} />
+                </Card.Body>
+              </Card>
+            </div>
+          </div>
         </Container>
-      </Navbar>
-      <div className="p-4 box mt-3 text-center"></div>
+      )}
       <Modal show={loadingResume} size="sm" centered>
         <Modal.Body>
           <Row
@@ -73,7 +103,10 @@ const Home = () => {
             className="d-flex align-items-center justify-content-center"
           >
             <Col md="auto">
-              <div style={{ width: "100%"}} className="d-flex align-items-center justify-content-center">
+              <div
+                style={{ width: "100%" }}
+                className="d-flex align-items-center justify-content-center"
+              >
                 <Spinner animation="border" />
               </div>
               <h2>Cargando...</h2>
@@ -81,7 +114,7 @@ const Home = () => {
           </Row>
         </Modal.Body>
       </Modal>
-    </Container>
+    </>
   );
 };
 
