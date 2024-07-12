@@ -69,11 +69,14 @@ const Home = () => {
       <Modal show={loadingResume} size="sm" centered>
         <Modal.Body>
           <Row
-            style={{ height: 200 }}
+            style={{ height: 150 }}
             className="d-flex align-items-center justify-content-center"
           >
             <Col md="auto">
-              <Spinner animation="border" />
+              <div style={{ width: "100%"}} className="d-flex align-items-center justify-content-center">
+                <Spinner animation="border" />
+              </div>
+              <h2>Cargando...</h2>
             </Col>
           </Row>
         </Modal.Body>
